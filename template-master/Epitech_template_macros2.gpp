@@ -1,0 +1,31 @@
+#define br 					\\newline{}
+#define space               \\hspace*{#1cm}
+#define newpage				\\newpage
+#define hfill				\\hfill
+#define tab4				&nbsp;&nbsp;&nbsp;&nbsp;
+#define tab8				#tab4 #tab4
+
+#define color				\\Begin{color}{#1}#2\\End{color}
+
+#define array				\\Begin{tabular}{@{}#1}#2\\End{tabular}
+#define next				\\tex{&}
+
+#define center 				\\Begin{center}#1\\End{center}
+#define right 				\\Begin{flushright}#1\\End{flushright}
+
+#define twoColumns			\\Begin{minipage}{#1\\textwidth}#2\\End{minipage} \\hfill \\Begin{minipage}{.95 \\textwidth- #1\\textwidth}#3\\End{minipage}
+
+#define prompt 				\\prompt
+#define promptMS 			\\promptMS
+
+#define imageCenter			\\imageCenterCorners{#1}{#2}{.8cm}
+#define imageCenterCorners	\\imageCenterCorners{#1}{#2}{#3}
+#define imageLeft			\\imageLeft{#1}{#2}{#3}
+#define imageRight			\\imageRight{#1}{#2}{#3}
+#define imageSide			\\imageSide{#1}{#2}{#3}{#4}
+#define imageSideTemp			\\imageSideTemp{#1}{#2}{#3}{#4}{#5}
+
+#define allLanguages		everything working on "the dump"
+#define makefile 			via Makefile, including re, clean and fclean rules
+#define makefileIfNecessary when necessary, #makefile
+#define cr 					\\\\n

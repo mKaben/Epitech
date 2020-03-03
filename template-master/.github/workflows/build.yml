@@ -1,0 +1,22 @@
+name: Build docker image
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 2 * * 0' # Weekly on Sundays at 02:00
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build and push to registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: epitechcontent/subject_template
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        dockerfile: Dockerfile
+        cache: ${{ github.event_name != 'schedule' }}

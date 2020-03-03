@@ -1,0 +1,19 @@
+#define hugeText			\\\\HUGE{#1}
+#define largeText			\\\\LARGE{#1}
+#define smallText			\\\\small{#1}
+#define typewriter			\\\\texttt{#1}
+
+#define	high				\\\\textsuperscript{#1}
+#define	low					\\$_{\\\\text{#1}}\\$
+#define verbatim			\\\\begin{verbatim}#1\\\\end{verbatim}
+
+#define warn				\\\\Begin{warningBox}#1\\\\End{warningBox}
+#define hint 				\\\\Begin{hintBox}#1\\\\End{hintBox}
+#define quote				\\\\Begin{quoteBox}{#1}#2\\\\End{quoteBox}
+
+#define tex 				\\\\tex{#1}
+
+#define terminal			\\\\Begin{term}{\\\\prompt}#1\\\\End{term}
+#define terminalMS 			\\\\Begin{term}{\\\\promptMS}#1\\\\End{term}
+#define terminalNoPrompt 	\\\\Begin{term}{}#1\\\\End{term}
+#define terminalNoMarkdown	\\\\begin{term}{\\\\prompt}#1\\\\end{term}

@@ -1,0 +1,272 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% EPITECH LaTeX template
+%%%                                    v2.2
+%%%
+%%%                Pierre ROBERT
+%%%                May 2017
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass
+	[a4paper,
+	$if(fontsize)$ $fontsize$   $else$ 11pt     $endif$,
+%	$if(lang)$     $babel-lang$ $else$ babel-en $endif$;
+	$for(classoption)$$classoption$$sep$,$endfor$]
+{article}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% packages
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[top=4cm, bottom=3cm, left=2cm , right=2cm]{geometry}
+\usepackage{courier}
+\usepackage{listings}
+\usepackage{upquote}
+\RequirePackage[unicode=true]{hyperref}
+\RequirePackage{templates/Epitech}
+\RequirePackage{eso-pic}				% background image
+\RequirePackage{titlesec} 				% section formatting
+\RequirePackage{needspace}				% unbreakable (sub*)sections
+\usepackage{bookmark}
+
+% \definecolor{mygreen}{rgb}{0,0.6,0}
+% \definecolor{mygray}{rgb}{0.5,0.5,0.5}
+% \definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+% solarized colors
+\definecolor{mydarkblack}{HTML}{073642}
+\definecolor{mylightblack}{HTML}{002B36}
+
+\definecolor{mydarkred}{HTML}{DC322F}
+\definecolor{mylightred}{HTML}{CB4b16}
+
+\definecolor{mydarkgreen}{HTML}{859900}
+\definecolor{mylightgreen}{HTML}{586E75}
+
+\definecolor{mydarkyellow}{HTML}{B58900}
+\definecolor{mylightyellow}{HTML}{657B83}
+
+\definecolor{mydarkblue}{HTML}{268BD2}
+\definecolor{mylightblue}{HTML}{839496}
+
+\definecolor{mydarkmagenta}{HTML}{D33682}
+\definecolor{mylightmagenta}{HTML}{6C71C4}
+
+\definecolor{mydarkcyan}{HTML}{2AA198}
+\definecolor{mylightcyan}{HTML}{93A1A1}
+
+\definecolor{mydarkwhite}{HTML}{EEE8D5}
+\definecolor{mylightwhite}{HTML}{FDF6E3}
+
+
+\lstset{ %
+  basicstyle=\footnotesize\ttfamily,        % size of fonts used for the code
+  breaklines=true,                			% automatic line breaking only at whitespace
+  captionpos=b,                    			% sets the caption-position to bottom
+  commentstyle=\color{mydarkgreen},			% comment style
+  escapeinside={\%*}{*)},          			% if you want to add LaTeX within your code
+  keywordstyle=\color{mydarkyellow},		% keyword style
+  stringstyle=\color{mydarkmagenta},		% string literal style
+  showstringspaces=false	   				% disable special character to show space in strings
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% general settings
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{page}{0}
+\thispagestyle{empty}
+\frenchspacing
+
+\hypersetup{breaklinks=true,
+            pdfauthor={Epitech},
+            pdfsubject={$subtitle$},
+            pdftitle={$title-meta$},
+            pdfcreator={$author$},
+            pdfkeywords={Epitech, $module$, $title$},
+            colorlinks=true,
+            citecolor=$if(citecolor)$$citecolor$$else$COLOR_light$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$COLOR_light$endif$,
+            pdfborder={0 0 0}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% config
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(module)$
+	\newcommand{\moduleCode}{$module$}
+$else$
+	\newcommand{\moduleCode}{MANDATORY MODULE CODE HERE}
+$endif$
+$if(title)$
+	\newcommand{\projectTitle}{$title$}
+$else$
+	\newcommand{\projectTitle}{MANDATORY TITLE HERE}
+$endif$
+$if(subtitle)$
+	\newcommand{\projectSubtitle}{$subtitle$}
+$else$
+	\newcommand{\projectSubtitle}{MANDATORY SUBTITLE HERE}
+$endif$
+$if(background)$
+	\newcommand{\backgroundImage}{$background$}
+$else$
+	\newcommand{\backgroundImage}{Epitech_CONTEX_background.png}
+$endif$
+
+\newcommand{\passthrough}[1]{#1}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% background image
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bgimg}
+{
+  	\AddToShipoutPicture
+	{
+		\put(\LenToUnit{0 cm},\LenToUnit{0 cm})
+			{\includegraphics[decodearray={\FPprint{\redQtt} 1 \FPprint{\greenQtt} 1 \FPprint{\blueQtt} 1}]{\backgroundImage}}
+	}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%te%%%%%%%%%%%%%%
+%
+% section formatting
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing{\section}{0px}{80px}{10px}
+\titleformat{\section}
+{\Needspace*{9\baselineskip}\LARGE\scshape\raggedright\bfseries}
+{}{0em}{}
+[\normalsize\vspace*{-14px}\hrulefill\phantomsection]
+
+\titlespacing{\subsection}{100px}{20px}{\baselineskip}
+\titleformat{\subsection}
+{\Needspace*{5\baselineskip}\Large\scshape\raggedright\bfseries}
+{\hspace*{15px}+ }{0em}{}
+[\normalsize\vspace*{-12px}\hspace*{15px}\hrulefill\phantomsection]
+
+\titlespacing{\subsubsection}{0px}{\baselineskip}{0px}
+\titleformat{\subsubsection}
+{\Needspace*{5\baselineskip}\Large\scshape\raggedright\bfseries}
+{}{0em}{}
+[\normalsize]
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% document
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	\hideFromPandoc
+	\input{unitDesc}   % fichier généré au moment de la compilation
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% background image
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\bgimg
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% presentation page
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	{\center
+		\color{COLOR_main}
+			\IfSubStr{\semester}{-1}
+				{\textbf{\Huge{\moduleName}}}
+				{\textbf{\Huge{\StrLeft{\moduleCode}{1}\semester{} - \moduleName}}}
+				 \\	\vspace*{-0.2cm}
+		\color{COLOR_light} 	\rule{0.7 \textwidth}{1pt}\\
+		\color{COLOR_light} 	\LARGE{\moduleCode}\\
+		\vspace*{6cm}
+		\fcofamily
+		\color{COLOR_red}   	\textbf{\HUGE{\projectTitle}}\\	\vspace*{-0.5cm}
+		\color{COLOR_redLight}	\rule{0.7 \textwidth}{1pt}\\
+		\color{COLOR_redLight}	\LARGE{\projectSubtitle} \\
+		\vspace*{2.5cm}
+		\includegraphics[height=150px]{logo.png}\\
+		\vfill \hfill
+		\color{COLOR_light}
+			$if(version)$ \small{$version$}
+			$else$		  \small{0.1}
+			$endif$
+		\vspace*{0.2cm}
+	}
+	\newpage
+
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% formalities
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{\projectTitle}
+	\phantomsection
+	\addcontentsline{toc}{section}{\projectTitle}
+	$if(noFormalities)$ $else$
+		{\fcofamily
+			\color{COLOR_red} \rule{.1 \textwidth}{0.2pt}
+			\color{COLOR_red} \textbf{\HUGE{\StrLeft{\projectTitle}{20}}}
+			\color{COLOR_red} \hrulefill\\
+			~\\
+			\color{COLOR_dark}
+			\begin{tabular}{r @{:~~ } p{12cm}}
+				$if(binary)$				\textbf{binary name}		& $binary$ \\		$endif$
+				$if(delivery)$				\textbf{delivery method}	& $delivery$ \\
+				$else$
+					$if(repository)$		\textbf{repository name}	& $repository$ \\
+						$if(repoRights)$	\textbf{repository rights}	& $repoRights$ \\
+						$else$              \textbf{repository rights}	& ramassage-tek \\
+						$endif$
+					$endif$
+				$endif$
+				$if(language)$				\textbf{language}			& $language$ \\		$endif$
+				$if(compilation)$ 			\textbf{compilation} 		& $compilation$\\ 	$endif$
+				$if(build)$ 				\textbf{build tool} 		& $build$\\ 	$endif$
+			\end{tabular}\newline
+			\vspace*{-5px}\newline
+			\color{COLOR_red} \hrulefill
+		}
+
+		\newcommand{\printWarning}{true}
+		$if(noCleanRepo)$ $if(noBonusDir)$ $if(noErrorMess)$
+			\renewcommand{\printWarning}{false}
+		$endif$ $endif$ $endif$
+		\IfSubStr{\printWarning}{true}
+		{
+			\begin{warningBox}
+				\vspace{-12pt}
+				\begin{itemize}[noitemsep,parsep=12pt]
+					$if(noCleanRepo)$ $else$ \item The totality of your source files, except all useless files (binary, temp files, obj files,...), must be included in your delivery.$endif$
+					$if(noBonusDir)$  $else$ \item All the bonus files (including a potential specific Makefile) should be in a directory named \emph{bonus}.$endif$
+					$if(noErrorMess)$ $else$ \item Error messages have to be written on the error output, and the program should then exit with the 84 error code (0 if there is no error).$endif$
+				\end{itemize}
+			\end{warningBox}
+		}{}
+		\vspace{8pt}
+	$endif$
+	\color{COLOR_dark}
+	$body$
+\end{document}

@@ -1,0 +1,219 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% EPITECH Beamer LaTeX template
+%%%                                    v2.1
+%%%
+%%%                Pierre ROBERT
+%%%                May 2017
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[aspectratio=169,t]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% packages
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{templates/Epitech}
+\RequirePackage{booktabs,latexsym,amssymb}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% config
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(module)$
+	\newcommand{\moduleCode}{$module$}
+$else$
+	\newcommand{\moduleCode}{MANDATORY MODULE CODE HERE}
+$endif$
+$if(title)$
+	\newcommand{\projectTitle}{$title$}
+$else$
+	\newcommand{\projectTitle}{MANDATORY TITLE HERE}
+$endif$
+$if(subtitle)$
+	\newcommand{\projectSubtitle}{$subtitle$}
+$else$
+	\newcommand{\projectSubtitle}{MANDATORY SUBTITLE HERE}
+$endif$
+$if(background)$
+	\newcommand{\backgroundImage}{$background$}
+$else$
+	\newcommand{\backgroundImage}{slideshow_background.jpg}
+$endif$
+
+\newcommand{\passthrough}[1]{#1}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% progress bar
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\progressbar@progressbar{} % the progress bar
+\newcount\progressbar@tmpcounta% auxiliary counter
+\newcount\progressbar@tmpcountb% auxiliary counter
+\newdimen\progressbar@pbht %progressbar height
+\newdimen\progressbar@pbwd %progressbar width
+\newdimen\progressbar@tmpdim % auxiliary dimension
+
+\progressbar@pbwd=\linewidth
+\progressbar@pbht=0.5ex
+
+% the progress bar
+\def\progressbar@progressbar{%
+
+    \progressbar@tmpcounta=\insertframenumber
+    \progressbar@tmpcountb=\inserttotalframenumber
+    \progressbar@tmpdim=\progressbar@pbwd
+    \multiply\progressbar@tmpdim by \progressbar@tmpcounta
+    \divide\progressbar@tmpdim by \progressbar@tmpcountb
+
+  \begin{tikzpicture}[rounded corners=2pt,very thin]
+
+    \shade[top color=gray!20,bottom color=gray!20,middle color=gray!50]
+      (0pt, 0pt) rectangle ++ (\progressbar@pbwd, \progressbar@pbht);
+
+      \shade[draw=black,top color=black!50,bottom color=black!50,middle color=black] %
+        (0pt, 0pt) rectangle ++ (\progressbar@tmpdim, \progressbar@pbht);
+
+    \draw[color=normal text.fg!50]
+      (0pt, 0pt) rectangle (\progressbar@pbwd, \progressbar@pbht)
+        node[pos=1.04,color=white] {\textnormal{%
+             \pgfmathparse{\insertframenumber*100/\inserttotalframenumber}%
+             \pgfmathprintnumber[fixed,precision=1]{\pgfmathresult}\,\%%
+        }%
+    };
+  \end{tikzpicture}%
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% general settings
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=20px, text margin right=20px}
+\setbeamertemplate{frametitle}
+{
+	\vspace*{35px}
+	\color{COLOR_dark}
+	\center\huge\bfseries\insertframetitle\par
+	\vskip-10pt
+	\hrulefill
+}
+\def\Put(#1,#2)#3{\leavevmode\makebox(0,0){\put(#1,#2){#3}}}
+\setbeamertemplate{background canvas}
+{%
+    \Put(0,-512){\includegraphics[width=\paperwidth]{\backgroundImage}}
+ 	\Put(385,-474){\includegraphics[height=50px]{logo.png}}
+}
+\setbeamertemplate{footline}
+{%
+	%  \begin{beamercolorbox}[wd=\paperwidth,ht=50ex,right,dp=2ex]{white}%
+	% 	\includegraphics[height=50px]{logo.png}
+	% \end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=4ex,center,dp=1ex]{white}%
+		\progressbar@progressbar%
+	\end{beamercolorbox}%
+}
+
+\hypersetup{breaklinks=true,
+            pdfauthor={Epitech},
+            pdfsubject={$subtitle$},
+            pdftitle={$title-meta$},
+            pdfcreator={$author$},
+            pdfkeywords={Epitech, $module$, $title$},
+            colorlinks=true,
+            citecolor=$if(citecolor)$$citecolor$$else$COLOR_light$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$COLOR_light$endif$,
+            pdfborder={0 0 0}}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% document
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	\hideFromPandoc
+	\input{unitDesc}   % fichier généré au moment de la compilation
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% presentation page
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	{
+	\thispagestyle{empty}
+	\addtocounter{page}{-1}
+	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{slideshow_background_title.jpg}}%
+	\begin{frame}[noframenumbering]
+		\center
+		\vspace*{80px}
+		\fcofamily
+		\color{COLOR_redLight!10!white}   	\textbf{\Huge{\projectTitle}}\\	\vspace*{-0.2cm}
+		\color{COLOR_redLight!50!white}	\rule{0.7 \textwidth}{1pt}\\
+		\color{COLOR_redLight!50!white}	\LARGE{\projectSubtitle} \\
+
+		\vspace*{45px}
+		\color{COLOR_light!50!white}
+			\IfSubStr{\semester}{-1}
+				{\textbf{\Large{\moduleName}}}
+				{\textbf{\Large{\StrLeft{\moduleCode}{1}\semester{} - \moduleName}}}
+				 \\	\vspace*{-0.6cm}
+		\color{COLOR_light} 	\rule{0.5 \textwidth}{1pt}\\
+		\color{COLOR_light} 	\large{\moduleCode}\\
+
+		\vspace*{14px}
+		\color{white}
+			$if(version)$ \tiny{$version$}
+			$else$		  \tiny{0.1}
+			$endif$
+	\end{frame}
+	}
+
+
+	$if(toc)$
+		\begin{frame}
+		\frametitle{$title$}
+		\tableofcontents[currentsection,currentsubsection]
+		\end{frame}
+	$endif$
+
+	$body$
+
+
+	$if(noQuestion)$
+	$else$
+		\begin{frame}
+			\frametitle{Any questions}
+			\begin{center} \LARGE ? \end{center}
+		\end{frame}
+
+	$endif$
+
+\end{document}

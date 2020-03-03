@@ -1,0 +1,397 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{Epitech}[2017/06/01]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% packages
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{comfortaa}				% title font
+\RequirePackage[default]{cabin}			% default font
+\renewcommand{\ttdefault}{lmtt}
+\RequirePackage[12pt]{moresize}			% bigger and smaller sizes
+\RequirePackage{graphicx}				% image
+\RequirePackage[most]{tcolorbox}		% warnings, hints boxes
+\RequirePackage{tikz} 					
+%\RequirePackage[urlcolor=COLOR_Light,colorlinks=true]{hyperref}	
+\RequirePackage{array}					% arrays 
+\RequirePackage{longtable}				% arrays 
+\RequirePackage{fancyvrb}				% fancy verbatim
+\RequirePackage{mdframed}				% env terminal
+\RequirePackage{wrapfig}				% text around figures
+\RequirePackage{enumitem}				% custom lists
+\RequirePackage{currfile}				% get current dir to include images	
+\RequirePackage{calc}					% computations
+\RequirePackage{fp}						% floating point calulus, for color managment
+\RequirePackage{xcolor, colortbl}		% colors
+\RequirePackage{xstring}				% substrings
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{tabularx}
+\RequirePackage{booktabs}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% variables
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% colors
+%\definecolor{COLOR_Blue}			{HTML}	{268BD2} %{80, 173, 229} % 0.31, 0.68, 0,90
+%\definecolor{COLOR_Green}			{HTML}	{586E75} % {0.20,	0.90,	0.20} 
+\definecolor{COLOR_Orange}			{rgb}	{0.90,	0.60,	0.20}
+%\definecolor{COLOR_DarkBlue}		{HTML}	{268BD2} % {0.13,	0.33,	0.44} 
+\definecolor{COLOR_LightGrey}		{rgb}	{0.863,	0.863,	0.863}
+\definecolor{COLOR_VeryLightGrey}	{rgb}	{0.923,	0.923,	0.923}
+\definecolor{COLOR_GentlyLightGrey}	{rgb}	{0.663,	0.663,	0.663}
+\definecolor{COLOR_DarkGrey}		{rgb}	{0.2,	0.2,	0.2}
+\definecolor{COLOR_TerminalBckgd}	{HTML} {073642} %{rgb}	{0.275,	0.275,	0.275} %{0.188,0.039,0.141}
+
+% Solarized colors
+\definecolor{mydarkblack}{HTML}{073642}
+\definecolor{mylightblack}{HTML}{002B36}
+
+\definecolor{mydarkred}{HTML}{DC322F}
+\definecolor{mylightred}{HTML}{CB4b16}
+
+\definecolor{COLOR_Green}{HTML}{859900}
+\definecolor{mylightgreen}{HTML}{586E75}
+
+\definecolor{mydarkyellow}{HTML}{B58900}
+\definecolor{mylightyellow}{HTML}{657B83}
+
+\definecolor{COLOR_DarkBlue}{HTML}{268BD2}
+\definecolor{COLOR_Blue}{HTML}{839496}
+
+\definecolor{mydarkmagenta}{HTML}{D33682}
+\definecolor{mylightmagenta}{HTML}{6C71C4}
+
+\definecolor{mydarkcyan}{HTML}{2AA198}
+\definecolor{mylightcyan}{HTML}{93A1A1}
+
+\definecolor{mydarkwhite}{HTML}{EEE8D5}
+\definecolor{mylightwhite}{HTML}{FDF6E3}
+
+
+
+% constants
+\newcommand{\moduleName}		{}	
+\newcommand{\semester}			{-10}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% general settings
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{./img/}{\currfiledir}}
+\setlist{topsep=2pt}
+\setlist{label=\(\bullet\)}
+\renewcommand{\tabcolsep}{5pt}
+\setlength{\LTpre}	{0pt}
+\setlength{\LTpost}	{0pt}
+\setlength\parindent{0pt}
+
+% for boxes
+\tcbset
+{
+	enhanced,%
+	hbox,%
+	drop shadow,%
+	boxrule=0pt,%
+	arc=6pt,%
+	left=6pt,%
+	right=8pt,%
+	top=6pt,%
+	bottom=6pt,%
+	boxsep=0pt%
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% color initializiation
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\initializeColors}[3]
+% #1 : red
+% #2 : green
+% #3 : Epitech blue
+{	
+	% color
+	\FPeval{redQtt}  {0.0031*#3 +0.01*(1-0.0031*#3)*#1}
+	\FPeval{greenQtt}{0.0068*#3 +0.01*(1-0.0068*#3)*#2}
+	\FPeval{blueQtt} {0.009*#3}
+
+	\definecolor{COLOR_main}{rgb}{\FPprint{\redQtt},\FPprint{\greenQtt},\FPprint{\blueQtt}}	
+
+	\colorlet{COLOR_light}		{COLOR_main!60!white}	
+	\colorlet{COLOR_dark} 		{COLOR_main!50!black}
+	\colorlet{COLOR_red}  		{COLOR_main!50!red}	
+	\colorlet{COLOR_redLight}   {COLOR_red!60!white}
+	\colorlet{COLOR_green}		{COLOR_main!50!green}
+	\colorlet{COLOR_greenLight} {COLOR_green!60!white}
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% image
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\roundedImage}[3]
+% #1 : image
+% #2 : width
+% #3 : round size
+{
+	\begin{tikzpicture}
+		\node [inner sep=0pt,draw=white](a) {\includegraphics[width=#2]{#1}};
+		\filldraw[white,line width=0pt](a.south west) rectangle (a.north east);
+		\clip[rounded corners=#3]      (a.south west) rectangle (a.north east);
+		\node [inner sep=0pt](a)			{\includegraphics[width=#2]{#1}};
+	\end{tikzpicture}
+}
+
+\newcommand{\imageCenterCorners}[3]
+% #1 : image
+% #2 : width
+% #3 : rounded corners size
+{	
+	\setlength\topsep{0pt}
+  	\setlength\parskip{0pt}
+	\begin{center}
+      	\roundedImage{#1}{#2}{#3}
+    \end{center}
+}
+\newcommand{\imageLeft}[3]
+% #1 : image
+% #2 : width
+% #3 : number of lines
+{	
+	\begin{wrapfigure}[#3]{l}{#2}
+      	\roundedImage{#1}{#2}{.4cm}
+    \end{wrapfigure}
+}
+\newcommand{\imageRight}[3]
+% #1 : image
+% #2 : width
+% #3 : number of lines
+{	
+	\begin{wrapfigure}[#3]{r}{#2}
+      	\roundedImage{#1}{#2}{.4cm}
+    \end{wrapfigure}
+}
+
+\newcommand{\imageSide}[4]
+% #1 : imageLeft
+% #2 : imageRight
+% #3 : widthImages
+% #4 : hspace
+{	
+	\begin{center}
+	\includegraphics[width={#3}px]{#1}
+        \hspace{#4px}
+        \includegraphics[width={#3}px]{#2}
+        \end{center}
+ 
+}
+
+\newcommand{\imageSideTemp}[5]
+% #1 : imageLeft
+% #2 : imageRight
+% #3 : widthImages
+% #4 : hspace
+% #5 : number of lines
+{	
+	\begin{wrapfigure}[#5]{r}{\textwidth}
+	\begin{center}
+	\includegraphics[width={#3}px]{#1}
+        \hspace{#4px}
+        \includegraphics[width={#3}px]{#2}
+        \end{center}
+    \end{wrapfigure}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% pandoc specific
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% force tex into pandoc
+\newcommand{\tex}[1]{#1}
+
+%%%%% GROSSE astuce pour que l'intérieur des balises \Begin et \End soit interprété en markdown
+\newcommand{\hideFromPandoc}
+{
+	\tex
+	{
+		\let\Begin\begin
+		\let\End\end
+	}
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% code
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DefineShortVerb[commandchars=\\\{\}]{\|}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% warning / hint
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{colorBox}[2]
+% #1 : color
+% #2 : picto
+{
+	\vspace{5pt}
+  	\noindent  	
+	\begin{tcolorbox}[width=\linewidth, colback=#1!8!white,colframe=#1]
+		\begin{tabular}[c]{m{38px} m{\linewidth-3\tabcolsep-38px}}
+			\includegraphics[height=38px]{#2}	
+  			& 
+  			\begin{minipage}{\linewidth}
+  				\color{COLOR_dark} 
+}
+{
+			\end{minipage}
+    	\end{tabular}
+  	\end{tcolorbox}
+  	\vspace{5pt}
+}
+\newenvironment{warningBox}	{\begin{colorBox}{COLOR_red}{Epitech_CONTEX_warning.png}}{\end{colorBox}}
+\newenvironment{hintBox}	{\begin{colorBox}{COLOR_light}{Epitech_CONTEX_hint.png}}{\end{colorBox}}
+
+\newcommand{\src}{}
+\newenvironment{quoteBox}[1]
+% #1 : source
+{
+	\renewcommand{\src}{#1}
+	\raggedleft
+	\begin{tcolorbox}[no shadow, colback=COLOR_light!5!white, arc=0mm, colframe=COLOR_main, boxrule=0mm, leftrule=1mm, width=0.96\textwidth]	
+		\color{COLOR_dark!50!COLOR_main} 
+		\itshape
+}
+{
+	\IfStrEq{\src}{}
+		{}
+		{\newline \par\hfill \src}
+	\end{tcolorbox}\bigskip
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% terminal
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\prompt}{\color{COLOR_green} \(\sim\)/\moduleCode\textgreater~\color{white}}
+\newcommand{\promptMS}{\color{COLOR_red} C:\textbackslash\moduleCode\textgreater~\color{white}}
+\newcommand{\inTerminal}{0}  % pour le verbatim
+\newenvironment{term}[1]
+% #1 : prompt
+{
+	\renewcommand{\inTerminal}{1}
+	\begin{minipage}{\linewidth}
+		\sffamily
+		\colorbox{COLOR_LightGrey}{\parbox{\textwidth-6px}
+		{
+			\color{COLOR_GentlyLightGrey}
+			~~\(\nabla\)
+			\color{COLOR_DarkGrey}
+			\hfill Terminal \hfill
+			\color{COLOR_GentlyLightGrey}
+			\Large{-~~~+}~~~\large{x}~
+		}}\vspace*{-9pt}
+		\ttfamily		
+		\begin{mdframed}[
+   		   	backgroundcolor=COLOR_TerminalBckgd,
+   		   	userdefinedwidth=\textwidth,
+      		leftmargin=0pt,
+      		innerleftmargin=4pt,
+      		innerrightmargin=4pt,
+      		innertopmargin=4pt,
+      		innerbottommargin=4pt,
+      		skipabove=0pt,
+      		skipbelow=0pt
+    	]
+			#1\color{white}			
+}
+{
+		\end{mdframed}
+	\end{minipage}
+	\renewcommand{\inTerminal}{0}
+	\vspace*{0.3cm}
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% custom verbatim
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TODO
+% ajuster la largeur de la tcolorbox au texte
+%
+\renewenvironment{verbatim}
+{
+	\VerbatimEnvironment
+	\IfSubStr{\inTerminal}{0}
+		{\begin{tcolorbox}[colback=COLOR_main!8!white,colframe=COLOR_main]}
+		{\vspace*{-\baselineskip}}
+	\begin{Verbatim}
+}
+{
+	\end{Verbatim}
+	\IfSubStr{\inTerminal}{0}
+		{\end{tcolorbox}}
+		{\vspace*{-\baselineskip}}	
+}
+

@@ -1,0 +1,162 @@
+code;;;name;semester;R;G;B
+;CapGemini;;Java EE Training Course;-1;5;5;50
+;EpitechDocumentation;;;-1;25;15;70
+B;MET;xxx;Professionnal Competencies;-1;5;5;20
+G;CUS;0xx;Know Your Tech/Crack A Trivia;0;0;0;40
+B;INN;0;HUB;0;10;0;70
+G;JAM;1;Epitech JAM;0;0;0;0
+G;JAR;xxx;Jarviss;0;15;5;75
+T;MSC;0;KTR;0;10;0;60
+G;SEC;xxx;Security;0;15;5;70
+G;SEC;0;Introduction to Binary Security;0;15;5;70
+G;SEC;10;Introduction to Web Security;0;15;5;70
+B;ADS;100;Introduction to OS;1;10;0;70
+W;BDD;50;Examens MySQL;1;10;0;60
+B;BOO;101;Phoenix Bootcamp;1;80;0;0
+C;COD;150;Pool PHP;1;10;0;60
+C;COD;140;Python;1;10;0;60
+W;COL;501;Colles;1;10;0;60
+B;CPE;100;Unix & C Lab Seminar;1;0;0;0
+B;CPE;101;Unix & C Lab Seminar;1;0;0;0
+B;CPE;102;Unix & C Lab Seminar;1;60;10;30
+B;CPE;120;GetNextLine;1;0;0;60
+B;CPE;130;Solo Stumpers;1;0;0;60
+B;CPE;110;Elementary Programming in C;1;0;0;60
+B;CPE;111;Elementary Programming in C;1;0;0;60
+C;CPE;42;Pool C;1;10;0;60
+W;JSC;502;Stack JavaScript;1;10;0;60
+B;MAT;100;Mathematics;1;0;0;70
+B;MUL;100;C Graphical Programming;1;20;0;80
+B;PSU;100;Unix System Programming;1;0;0;40
+B;PSU;110;Shell Programming;1;10;0;50
+W;WEB;24;Piscine PHP;1;10;0;60
+B;AIA;200;Introduction to Artificial Intelligence;2;5;15;70
+W;COL;502;Colles;2;10;0;60
+B;CPE;210;Stumpers;2;0;0;60
+B;CPE;200;Elementary Programming in C;2;0;0;60
+B;CPE;201;Elementary Programming in C;2;0;0;60
+B;MAT;200;Mathematics;2;0;0;70
+B;MUL;200;C Graphical Programming;2;20;0;80
+B;NET;200;Introduction to Networks;2;20;10;60
+B;NET;400;Introduction to Networks;2;20;10;60
+B;NSA;200;Networks and Systems Administration;2;10;0;70
+B;PSU;200;Unix System Programming;2;0;0;40
+B;PSU;210;Shell Programming;2;10;0;50
+B;SAD;200;Introduction to System Administration;2;10;0;70
+B;SYN;200;Synthesis Pool;2;40;10;30
+B;WEB;200;Introduction to Web Development;2;0;20;60
+W;WEB;502;Web Project Management;2;10;0;60
+T;AIA;300;AI Championship;3;5;15;70
+B;CPE;300;Elementary Programming in C;3;0;0;60
+B;CPP;300;C++ Pool;3;40;10;35
+B;FUN;300;Haskell Pool;3;5;0;40
+T;JAV;300;Java Seminar;3;5;5;50
+T;OOP;300;Object-Oriented Programming;3;15;5;70
+B;PRO;300;Internship;3;14;14;50
+T;SAD;300;Unix System Administration;3;10;0;70
+B;SHL;300;Shell Script;3;10;5;90
+T;USP;300;Unix Programming: Network & Concurrency;3;0;0;40
+T;WEB;300;Web Development Seminar;3;60;10;30
+T;WEB;310;Web Development;3;60;10;30
+W;WEB;250;PHP Avancé;3;10;0;60
+B;ADS;400;Introduction to System Administration;4;10;0;70
+B;ASM;400;x86_64 Assembler;4;10;5;40
+B;CCP;400;Concurrent Programming;4;0;0;40
+B;CNA;410;Computer Numerical Analysis – Trade;4;0;0;70
+B;FUN;400;Functional Programming;4;5;0;40
+B;MAT;400;Mathematics;4;0;0;70
+B;NSA;400;Systems and Networks Administration;4;10;0;70
+B;NWP;400;Network Programming;4;0;0;40
+B;OOP;400;Object-Oriented Programming;4;20;20;50
+T;PRO;400;Internship;4;14;14;50
+B;PSU;400;Unix System Programming;4;0;0;40
+B;PSU;401;Unix System Programming;4;0;0;40
+B;PSU;402;Unix System Programming;4;0;0;40
+B;PSU;403;Unix System Programming;4;0;0;40
+B;SYN;400;Synthesis Pool;4;40;10;30
+B;YEP;400;Year-End Project;4;20;20;50
+B;YEP;410;Year-End Project;4;20;20;50
+B;ADS;500;Introduction to System Administration;5;10;0;70
+T;ADS;500;Unix System Administration;5;10;0;70
+T;ADS;510;System Administration;5;10;0;70
+B;AIA;500;Artificial Intelligence;5;5;15;70
+T;CEN;500;Project Management;5;70;0;0
+B;CPP;500;Advanced C++;5;20;20;50
+B;CPP;501;Advanced C++;5;20;20;50
+B;CPP;510;Advanced C++;5;20;20;50
+B;CSI;550;Information System Conception;5;6;6;80
+B;DEV;500;Application Development;5;20;0;60
+B;DEV;501;Application Development;5;20;0;60
+B;DEV;510;Application Development;5;20;0;60
+B;FUN;500;Advanced Functional Programming;5;5;0;40
+B;FUN;501;Advanced Functional Programming;5;5;0;40
+B;FUN;510;Advanced Functional Programming;5;5;0;40
+B;LAW;500;Law & Privacy on Internet;5;10;10;50
+B;MAT;500;Mathematics;5;0;0;70
+T;MOB;600;Mobile Development: Android;5;20;0;60
+B;PRO;500;Part-time Internship;5;14;14;50
+B;SEC;500;Cryptography;5;15;5;70
+T;SEC;500;Initiation to security;5;15;5;70
+T;SHL;500;Shell Script;5;10;5;90
+T;SRS;500;Systems and Networks Seminar;5;0;0;0
+T;WEB;501;Front-end web development;5;10;10;50
+T;WEB;510;Web frameworks;5;10;10;50
+T;CPP;600;C++;6;50;30;60
+T;DOP;600;DevOps;6;14;14;50
+T;DOT;600;.NET Programming;6;20;0;60
+T;JAV;600;Advanced Java;6;5;5;50
+T;JSF;600;Javascript Frameworks;6;34;24;60
+T;ORG;600;Organizational Structure;6;10;0;60
+B;PRO;600;Internship;6;14;14;50
+T;PRO;600;Part-time Job;6;14;14;50
+T;CPP;700;C++;7;0;0;50
+T;CPP;710;C++;7;0;0;50
+T;CPP;720;C++ Pool;7;0;0;50
+T;DEV;700;Application Development;7;10;0;60
+T;DEV;800;Application Development;8;10;0;60
+T;DEV;810;AI & Big Data;8;10;0;60
+T;DIT;700;Digital Transformation;7;0;0;70
+T;DIT;800;Digital Transformation;8;0;0;70
+T;ESP;800;End of Study Project;8;10;0;60
+T;MOB;700;Mobile Application Development;7;0;0;50
+T;NSA;700;Network & Sys Admin;7;10;10;60
+T;NSA;800;Network & Sys Admin;8;10;10;60
+T;NSA;810;Cloud & Security;8;10;10;60
+T;NWA;710;Administration Réseau - Infrastructure;7;0;0;0
+T;POO;700;MSc Pool;7;20;0;10
+T;PSP;700;Project Specifications;7;10;0;60
+T;WEB;700;Web Development;7;10;0;60
+T;WEB;800;Web Development;8;10;0;60
+T;BDD;800;Database;8;0;0;50
+T;DAB;800;Introduction aux Bases de Données;8;0;0;0
+T;EMB;800;Embedded World;8;0;0;50
+T;INF;800;Infrastructure as a Service;8;0;0;0
+T;INF;810;Infrastructure S.I.;8;0;0;0
+T;INF;820;Urbanisation S.I.;8;0;0;0
+T;MOB;800;Mobile Cross Plateform Development;8;0;0;50
+T;NET;800;Réseaux nouvelle génération;8;0;0;0
+T;PRO;800;Part-time Job;8;14;14;50
+T;SAD;800;Software as a Service;8;0;0;0
+T;SEC;800;Sécurité intermédiaire;8;0;0;0
+T;SNA;800;Supervision Système et Réseau Initiation;8;0;0;0
+T;WEB;600;PHP Frameworks;8;0;0;50
+T;DAB;900;Database as a Service;9;0;0;0
+T;DAT;901;Big Data;9;20;10;80
+T;DAT;902;Big Data;9;20;10;80
+T;DAT;903;Big Data;9;20;10;80
+T;AI;901;Artificial Intelligence;9;15;5;65
+T;AI;902;Artificial Intelligence;9;15;5;65
+T;AI;903;Artificial Intelligence;9;15;5;65
+T;CLO;901;Cloud;9;10;10;60
+T;CLO;902;Cloud;9;10;10;60
+T;CLO;903;Cloud;9;10;10;60
+T;SEC;901;Security;9;0;20;55
+T;SEC;902;Security;9;0;20;55
+T;SEC;903;Security;9;0;20;55
+T;INF;900;Infrastructure S.I. intermédiaire;9;0;0;0
+T;NET;900;Advanced Next Generation Networks;9;15;5;70
+T;SAD;900;Plateforme as a Service;9;0;0;0
+T;SEC;900;Advanced Security;9;15;5;70
+T;SNA;900;Supervision Système et Réseau avancé;9;0;0;0
+T;WEB;x00;Web Development Seminar;;60;10;30
+T;DIT;810;Digital Transformation;8;0;0;70
